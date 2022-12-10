@@ -21,7 +21,7 @@ export default function ScreenTab3F({navigation}) {
                     <StatusBar style="auto" />
                     <View>
                         <Text style={styles.mytexta}>Ksiazka1</Text>
-                        <Text style={styles.mytexta}>Rodzaj ksiazki1</Text>
+                        <Text style={styles.mytexta}>Data</Text>
                     </View>
                 </View>
                 <View style={styles.sview}>
@@ -29,7 +29,7 @@ export default function ScreenTab3F({navigation}) {
                     <StatusBar style="auto" />
                     <View>
                         <Text style={styles.mytexta}>Ksiazka2</Text>
-                        <Text style={styles.mytexta}>Rodzaj ksiazki2</Text>
+                        <Text style={styles.mytexta}>Data</Text>
                     </View>
                 </View>
                 <View style={styles.sview}>
@@ -37,7 +37,7 @@ export default function ScreenTab3F({navigation}) {
                     <StatusBar style="auto" />
                     <View>
                         <Text style={styles.mytexta}>Ksiazka3</Text>
-                        <Text style={styles.mytexta}>Rodzaj ksiazki3</Text>
+                        <Text style={styles.mytexta}>Data</Text>
                     </View>
                 </View>
             </ScrollView>
