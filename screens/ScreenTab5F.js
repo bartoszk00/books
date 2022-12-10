@@ -24,11 +24,11 @@ export default function ScreenTab5F({navigation}) {
             </View>
         </View>
         <View style={styles.sdview}>
+            <TouchableOpacity style={styles.loginBtn} onPress={()=>navigation.navigate("Historia", {language: "english"})}>
+                            <Text style={styles.loginText}>Historia</Text>
+                        </TouchableOpacity>
             <TouchableOpacity style={styles.loginBtn} onPress={()=>navigation.navigate("Domowa", {language: "english"})}>
                 <Text style={styles.loginText}>Wyloguj</Text>
-            </TouchableOpacity>
-            <TouchableOpacity style={styles.loginBtn} onPress={()=>navigation.navigate("Historia", {language: "english"})}>
-                <Text style={styles.loginText}>Historia</Text>
             </TouchableOpacity>
         </View>
     </SafeAreaView>
