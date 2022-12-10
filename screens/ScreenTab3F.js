@@ -10,18 +10,37 @@ import {
   ScrollView,
 } from "react-native";
 
-
 export default function ScreenTab3F({navigation}) {
   return (
     <SafeAreaView style={styles.container}>
         <Image style={styles.image} source={require("./log2.png")} />
         <Text style={styles.mytext}>Rezerwacje</Text>
-        <ScrollView style={styles.scrollView}>
-          <Image style={styles.imagek} source={require("./ksiazka2.jpeg")} />
-          <Text style={styles.mytextb}>Ksiazka1</Text>
-          <Image style={styles.imagek2} source={require("./ksiazka2.jpeg")} />
-          <StatusBar style="auto" />
-        </ScrollView>
+            <ScrollView style={styles.scrollView}>
+                <View style={styles.sview}>
+                    <Image style={styles.imagek} source={require("./ksiazka2.jpeg")} />
+                    <StatusBar style="auto" />
+                    <View>
+                        <Text style={styles.mytexta}>Ksiazka1</Text>
+                        <Text style={styles.mytexta}>Rodzaj ksiazki1</Text>
+                    </View>
+                </View>
+                <View style={styles.sview}>
+                    <Image style={styles.imagek} source={require("./ksiazka2.jpeg")} />
+                    <StatusBar style="auto" />
+                    <View>
+                        <Text style={styles.mytexta}>Ksiazka2</Text>
+                        <Text style={styles.mytexta}>Rodzaj ksiazki2</Text>
+                    </View>
+                </View>
+                <View style={styles.sview}>
+                    <Image style={styles.imagek} source={require("./ksiazka2.jpeg")} />
+                    <StatusBar style="auto" />
+                    <View>
+                        <Text style={styles.mytexta}>Ksiazka3</Text>
+                        <Text style={styles.mytexta}>Rodzaj ksiazki3</Text>
+                    </View>
+                </View>
+            </ScrollView>
     </SafeAreaView>
   );
 }
@@ -38,6 +57,9 @@ const styles = StyleSheet.create({
       backgroundColor: 'white',
       marginHorizontal: 20,
     },
+    sview: {
+       flexDirection: 'row',
+    },
 
   image: {
     marginBottom: 5,
@@ -45,16 +67,16 @@ const styles = StyleSheet.create({
 
    imagek: {
       marginBottom: 5,
-      height: 150,
-      width: 100,
-      marginRight: 260,
+      height: 145,
+      width: 80,
+      marginRight: 30,
       marginTop: 1,
     },
     imagek2: {
           marginBottom: 5,
           height: 150,
           width: 100,
-          marginRight: 260,
+          marginLeft: 1,
           marginTop: 1,
     },
   loginText:{
@@ -70,7 +92,8 @@ const styles = StyleSheet.create({
       height: 30,
       marginTop: 0,
       marginBottom: 0,
-      color: "green",
+      marginRight: 150,
+      textAlign: 'Left',
     },
  mytextb:{
        height: 30,

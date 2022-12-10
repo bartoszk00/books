@@ -45,12 +45,12 @@ function MyStack() {
 
 function BottomTabs() {
   return (
-      <Tab.Navigator>
-      <Tab.Screen name="Popularne" component={ScreenTab1F} />
-      <Tab.Screen name="Rejestr" component={ScreenTab2F} />
-      <Tab.Screen name="Rezerwacje" component={ScreenTab3F} />
-      <Tab.Screen name="Ulubione" component={ScreenTab4F} />
-      <Tab.Screen name="Profil" component={ScreenTab5F} />
+    <Tab.Navigator>
+      <Tab.Screen name="Popularne" component={ScreenTab1F} options={{headerShown: false}}/>
+      <Tab.Screen name="Rejestr" component={ScreenTab2F} options={{headerShown: false}}/>
+      <Tab.Screen name="Rezerwacje" component={ScreenTab3F} options={{headerShown: false}}/>
+      <Tab.Screen name="Ulubione" component={ScreenTab4F} options={{headerShown: false}}/>
+      <Tab.Screen name="Profil" component={ScreenTab5F} options={{headerShown: false}}/>
     </Tab.Navigator>
   );
 }
@@ -91,7 +91,7 @@ function App()
       headerTintColor: 'white',
     }}
    >
-      <Drawer.Screen name="Logowanie" component={MyStack}  />
+      <Drawer.Screen name="Logowanie" component={MyStack} />
       <Drawer.Screen name="Books" component={BottomTabs} />
     </Drawer.Navigator>
     </NavigationContainer>

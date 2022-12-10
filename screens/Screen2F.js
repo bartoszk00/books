@@ -20,9 +20,17 @@ export default function Screen2F({navigation}) {
         <Image style={styles.imagek} source={require("./ksiazka2.jpeg")} />
         <Text style={styles.mytexta}>Książka1</Text>
         <Text style={styles.mytexta}>Opis książki 1</Text>
-        <TouchableOpacity style={styles.loginBtn}>
-              <Text style={styles.loginText}>Rezerwuj</Text>
-        </TouchableOpacity>
+        <View style={styles.sdview}>
+            <TouchableOpacity style={styles.loginBtn}>
+                <Text style={styles.loginText}>Rezerwuj</Text>
+            </TouchableOpacity>
+            <TouchableOpacity style={styles.loginBtn}>
+                <Text style={styles.loginText}>Ulubiona</Text>
+            </TouchableOpacity>
+            <TouchableOpacity style={styles.loginBtn}>
+                <Text style={styles.loginText}>Usuń</Text>
+            </TouchableOpacity>
+        </View>
     </SafeAreaView>
   );
 }
@@ -38,6 +46,10 @@ const styles = StyleSheet.create({
   scrollView: {
       backgroundColor: 'white',
       marginHorizontal: 20,
+    },
+  sdview: {
+             flexDirection: 'row',
+             marginTop: 0,
     },
 
   image: {
@@ -115,13 +127,13 @@ const styles = StyleSheet.create({
   },
 
   loginBtn: {
-    width: "35%",
+    width: "30%",
     borderRadius: 10,
     height: 50,
     alignItems: "center",
     justifyContent: "center",
     marginTop: 10,
     backgroundColor: "#1D33DE",
-    marginRight: 150,
+    marginRight: 10,
   },
 });

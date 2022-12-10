@@ -15,16 +15,22 @@ export default function ScreenTab5F({navigation}) {
     <SafeAreaView style={styles.container}>
         <Image style={styles.image} source={require("./log2.png")} />
         <Text style={styles.mytext}>Profil</Text>
-        <Image style={styles.imagek} source={require("./ustawienia.jpeg")} />
-        <Text style={styles.mytexta}>Imię: Jan</Text>
-        <Text style={styles.mytexta}>Nazwisko: Kowalski</Text>
-        <Text style={styles.mytexta}>Email: Jan@xx.pl</Text>
-        <TouchableOpacity style={styles.loginBtn} onPress={()=>navigation.navigate("Domowa", {language: "english"})}>
-            <Text style={styles.loginText}>Wyloguj</Text>
-        </TouchableOpacity>
-        <TouchableOpacity style={styles.loginBtn} onPress={()=>navigation.navigate("Historia", {language: "english"})}>
-             <Text style={styles.loginText}>Historia</Text>
-        </TouchableOpacity>
+        <View style={styles.sview}>
+            <Image style={styles.imagek} source={require("./ustawienia.jpeg")} />
+            <View>
+                <Text style={styles.mytexta}>Imię: Jan</Text>
+                <Text style={styles.mytexta}>Nazwisko: Kowalski</Text>
+                <Text style={styles.mytexta}>Email: Jan@xx.pl</Text>
+            </View>
+        </View>
+        <View style={styles.sdview}>
+            <TouchableOpacity style={styles.loginBtn} onPress={()=>navigation.navigate("Domowa", {language: "english"})}>
+                <Text style={styles.loginText}>Wyloguj</Text>
+            </TouchableOpacity>
+            <TouchableOpacity style={styles.loginBtn} onPress={()=>navigation.navigate("Historia", {language: "english"})}>
+                <Text style={styles.loginText}>Historia</Text>
+            </TouchableOpacity>
+        </View>
     </SafeAreaView>
   );
 }
@@ -35,6 +41,14 @@ const styles = StyleSheet.create({
     backgroundColor: "#fff",
     alignItems: "center",
     justifyContent: "center",
+  },
+
+  sview: {
+         flexDirection: 'row',
+  },
+  sdview: {
+           flexDirection: 'row',
+           marginTop: 200,
   },
 
   scrollView: {
@@ -50,7 +64,7 @@ const styles = StyleSheet.create({
       marginBottom: 5,
       height: 100,
       width: 100,
-      marginRight: 260,
+      marginRight: 10,
       marginTop: 1,
     },
     imagek2: {
@@ -69,12 +83,14 @@ const styles = StyleSheet.create({
     marginBottom: 20,
   },
 
-  mytexta:{
-      height: 30,
-      marginTop: 0,
-      marginBottom: 0,
-      marginLeft: 100,
-    },
+   mytexta:{
+        height: 30,
+        marginTop: 0,
+        marginBottom: 0,
+        marginRight: 100,
+        marginLeft: 10,
+        textAlign: 'Right',
+      },
  mytextb:{
        height: 30,
        marginTop: 0,
@@ -124,6 +140,6 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     marginTop: 10,
     backgroundColor: "#000000",
-    marginLeft: 100,
+    marginLeft: 20,
   },
 });
