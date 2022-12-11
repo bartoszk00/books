@@ -45,7 +45,32 @@ function MyStack() {
 
 function BottomTabs() {
   return (
-    <Tab.Navigator>
+    <Tab.Navigator
+        screenOptions={({route})=>({
+            tabBarIcon:({focused, color, size})=>{
+                let iconName;
+
+                if(route.name==='Popularne'){
+                    iconName=focused ? 'home' : 'home';
+                }
+                else if(route.name==='Rejestr'){
+                    iconName=focused ? 'search' : 'search';
+                }
+                else if(route.name==='Rezerwacje'){
+                    iconName=focused ? 'add-circle' : 'add-circle';
+                }
+                else if(route.name==='Ulubione'){
+                    iconName=focused ? 'heart' : 'heart';
+                }
+                else if(route.name==='Profil'){
+                    iconName=focused ? 'person' : 'person';
+                }
+                return <Ionicons name={iconName} size={size} color={color}/>;
+            },
+            tabBarActiveTintColor: 'tomato',
+            tabBarInactiveTintColor: 'black',
+        })}
+        >
       <Tab.Screen name="Popularne" component={ScreenTab1F} options={{headerShown: false}}/>
       <Tab.Screen name="Rejestr" component={ScreenTab2F} options={{headerShown: false}}/>
       <Tab.Screen name="Rezerwacje" component={ScreenTab3F} options={{headerShown: false}}/>
