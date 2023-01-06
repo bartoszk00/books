@@ -107,7 +107,7 @@ const styles = StyleSheet.create({
     width: "70%",
     height: 40,
     marginBottom: 20,
-    alignItems: "left",
+    alignItems: "flex-start",
     borderColor: "#d4d5d9",
     borderWidth: 1,
   },
