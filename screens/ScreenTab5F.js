@@ -9,8 +9,34 @@ import {
   SafeAreaView,
   ScrollView,
 } from "react-native";
+import { getFirestore } from "firebase/firestore";
+import app from "./firestoreConfig"
+import { collection, getDocs, addDoc } from "firebase/firestore";
+import {useEffect} from "react";
 
 export default function ScreenTab5F({navigation}) {
+  const [data, setData] = useState([])
+    const db = getFirestore(app);
+    useEffect(() => {
+        getDocs(collection(db, "users")).then((querySnapshot) => {
+            let tmp = []
+            querySnapshot.forEach((doc) => {
+                tmp = [...tmp, doc.data()];
+            });
+            setData(tmp)
+        })
+      //   try {
+      //       const docRef = addDoc(collection(db, "users"), {
+      //           first: "Ada",
+      //           last: "Lovelace",
+      //           born: 1815
+      //       });
+      //       console.log("Document written with ID: ", docRef.id);
+      //   } catch (e) {
+      //       console.error("Error adding document: ", e);
+      //   }
+    }, [])
+
   return (
     <SafeAreaView style={styles.container}>
         <Image style={styles.image} source={require("./log2.png")} />
@@ -18,9 +44,9 @@ export default function ScreenTab5F({navigation}) {
         <View style={styles.sview}>
             <Image style={styles.imagek} source={require("./ustawienia.jpeg")} />
             <View>
-                <Text style={styles.mytexta}>Imię: Jan</Text>
-                <Text style={styles.mytexta}>Nazwisko: Kowalski</Text>
-                <Text style={styles.mytexta}>Email: Jan@xx.pl</Text>
+                <Text style={styles.mytexta}>Imię: &nbsp;{data.map((item,index) => (<Text key={index}>{item.imie}</Text>))}</Text>
+                <Text style={styles.mytexta}>Nazwisko: &nbsp;{data.map((item,index) => (<Text key={index}>{item.nazwisko}</Text>))}</Text>
+                <Text style={styles.mytexta}>Email: &nbsp;{data.map((item,index) => (<Text key={index}>{item.email}</Text>))}</Text>
             </View>
         </View>
         <View style={styles.sdview}>
@@ -89,7 +115,7 @@ const styles = StyleSheet.create({
         marginBottom: 0,
         marginRight: 100,
         marginLeft: 10,
-        textAlign: 'flex-end',
+        textAlign: 'right',
       },
  mytextb:{
        height: 30,

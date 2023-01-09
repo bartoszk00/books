@@ -23,7 +23,7 @@ export default function ScreenTab2F({navigation}) {
                       onChangeText={(szukaj) => setLogin(szukaj)}
                     />
                   </View>
-        <ScrollView style={styles.scrollView}>
+        <ScrollView directionalLockEnabled style={styles.scrollView}>
                         <View style={styles.sview}>
                             <TouchableOpacity onPress={()=>navigation.navigate("Opis", {language: "english"})}>
                             <Image style={styles.imagek} source={require("./ksiazka2.jpeg")} />
@@ -107,7 +107,7 @@ const styles = StyleSheet.create({
       marginTop: 0,
       marginBottom: 0,
       marginRight: 150,
-      textAlign: 'flex-start',
+      textAlign: 'left',
     },
  mytextb:{
        height: 30,

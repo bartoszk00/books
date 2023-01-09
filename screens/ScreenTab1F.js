@@ -1,6 +1,7 @@
 import { StatusBar } from 'expo-status-bar';
 import { StyleSheet, Button, View } from 'react-native';
 import React, { useState } from "react";
+import { useEffect } from 'react';
 import {
   Text,
   Image,
@@ -8,18 +9,39 @@ import {
   TouchableOpacity,
   SafeAreaView,
   ScrollView,
+  Platform,
 } from "react-native";
-
+import { Barometer } from 'expo-sensors';
 
 export default function ScreenTab1F({navigation}) {
+  const [barometerData, setBarometerData] = useState({});
+
+    useEffect(() => {
+      const subscribe = Barometer.addListener(barometerData => {
+        setBarometerData(barometerData);
+      });
+
+      return () => {
+        subscribe.remove();
+      };
+    }, []);
   return (
     <SafeAreaView style={styles.container}>
         <Image style={styles.image} source={require("./log2.png")} />
         <Text style={styles.mytext}>Najpopularniejsze książki</Text>
-        <Text style={styles.mytexta}>xxxhPa</Text>
-        <Text style={styles.mytexta}>dobre ciśnienie do czytania</Text>
-        <ScrollView style={styles.scrollView}>
+        <Text style={styles.mytexta}>{barometerData.pressure} hPa</Text>
+        { barometerData.pressure > 1013 ? (
+                        <Text style={styles.mytexta}>dobre ciśnienie do czytania</Text>
+        ) : null }
+        { barometerData.pressure <= 1013 ? (
+                         <Text style={styles.mytexta}>złe ciśnienie do czytania</Text>
+        ) : null }
+        <ScrollView horizontal style={styles.scrollView}>
+                    <View>
                                     <View style={styles.sview}>
+                                     <Image style={styles.imagek} source={require("./ksiazka2.jpeg")} />
+                                     <Image style={styles.imagek} source={require("./ksiazka2.jpeg")} />
+                                     <Image style={styles.imagek} source={require("./ksiazka2.jpeg")} />
                                      <Image style={styles.imagek} source={require("./ksiazka2.jpeg")} />
                                      <Image style={styles.imagek} source={require("./ksiazka2.jpeg")} />
                                      <Image style={styles.imagek} source={require("./ksiazka2.jpeg")} />
@@ -31,23 +53,35 @@ export default function ScreenTab1F({navigation}) {
                                         <Text style={styles.mytextb}>Ksiazka2</Text>
                                         <Text style={styles.mytextb}>Ksiazka3</Text>
                                         <Text style={styles.mytextb}>Ksiazka4</Text>
+                                        <Text style={styles.mytextb}>Ksiazkax</Text>
+                                        <Text style={styles.mytextb}>Ksiazka4</Text>
+                                        <Text style={styles.mytextb}>Ksiazkax</Text>
                                     </View>
-                                </ScrollView>
-                                <ScrollView style={styles.scrollView}>
-                                                                    <View style={styles.sview}>
-                                                                     <Image style={styles.imagek} source={require("./ksiazka2.jpeg")} />
-                                                                     <Image style={styles.imagek} source={require("./ksiazka2.jpeg")} />
-                                                                     <Image style={styles.imagek} source={require("./ksiazka2.jpeg")} />
-                                                                     <Image style={styles.imagek} source={require("./ksiazka2.jpeg")} />
-                                                                     <StatusBar style="auto" />
-                                                                    </View>
-                                                                    <View style={styles.sview}>
-                                                                        <Text style={styles.mytextb}>Ksiazka5</Text>
-                                                                        <Text style={styles.mytextb}>Ksiazka6</Text>
-                                                                        <Text style={styles.mytextb}>Ksiazka7</Text>
-                                                                        <Text style={styles.mytextb}>Ksiazka8</Text>
-                                                                    </View>
-                                                                </ScrollView>
+                              </View>
+         </ScrollView>
+         <ScrollView horizontal style={styles.scrollView}>
+                                <View>
+                                    <View style={styles.sview}>
+                                        <Image style={styles.imagek} source={require("./ksiazka2.jpeg")} />
+                                        <Image style={styles.imagek} source={require("./ksiazka2.jpeg")} />
+                                        <Image style={styles.imagek} source={require("./ksiazka2.jpeg")} />
+                                        <Image style={styles.imagek} source={require("./ksiazka2.jpeg")} />
+                                        <Image style={styles.imagek} source={require("./ksiazka2.jpeg")} />
+                                        <Image style={styles.imagek} source={require("./ksiazka2.jpeg")} />
+                                        <Image style={styles.imagek} source={require("./ksiazka2.jpeg")} />
+                                        <StatusBar style="auto" />
+                                    </View>
+                                    <View style={styles.sview}>
+                                        <Text style={styles.mytextb}>Ksiazka5</Text>
+                                        <Text style={styles.mytextb}>Ksiazka6</Text>
+                                        <Text style={styles.mytextb}>Ksiazka7</Text>
+                                        <Text style={styles.mytextb}>Ksiazka8</Text>
+                                        <Text style={styles.mytextb}>Ksiazkay</Text>
+                                        <Text style={styles.mytextb}>Ksiazka8</Text>
+                                        <Text style={styles.mytextb}>Ksiazkay</Text>
+                                    </View>
+                               </View>
+         </ScrollView>
     </SafeAreaView>
   );
 }
@@ -63,6 +97,7 @@ const styles = StyleSheet.create({
   scrollView: {
       backgroundColor: 'white',
       marginHorizontal: 20,
+      overflow: 'Hidden',
     },
     sview: {
            flexDirection: 'row',

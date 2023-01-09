@@ -15,7 +15,7 @@ export default function ScreenTab3F({navigation}) {
     <SafeAreaView style={styles.container}>
         <Image style={styles.image} source={require("./log2.png")} />
         <Text style={styles.mytext}>Rezerwacje</Text>
-            <ScrollView style={styles.scrollView}>
+            <ScrollView directionalLockEnabled style={styles.scrollView}>
                 <View style={styles.sview}>
                     <Image style={styles.imagek} source={require("./ksiazka2.jpeg")} />
                     <StatusBar style="auto" />
@@ -93,7 +93,7 @@ const styles = StyleSheet.create({
       marginTop: 0,
       marginBottom: 0,
       marginRight: 150,
-      textAlign: 'flex-start',
+      textAlign: 'left',
     },
  mytextb:{
        height: 30,

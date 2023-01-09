@@ -1,6 +1,8 @@
 import { StatusBar } from 'expo-status-bar';
 import { StyleSheet, Button, View } from 'react-native';
 import React, { useState } from "react";
+import { useEffect } from 'react';
+import { Accelerometer } from 'expo-sensors';
 import {
   Text,
   Image,
@@ -11,11 +13,28 @@ import {
 } from "react-native";
 
 export default function Screen3F({navigation}) {
+  const [accelerometerData, setAccelerometerData] = useState({});
+
+      useEffect(() => {
+        const subscribe = Accelerometer.addListener(accelerometerData => {
+          setAccelerometerData(accelerometerData);
+        });
+
+        return () => {
+          subscribe.remove();
+        };
+      }, []);
   return (
     <SafeAreaView style={styles.container}>
         <Image style={styles.image} source={require("./log2.png")} />
+        { accelerometerData.x > 0.53 ? (
+                        navigation.navigate("Profil", {language: "english"})
+         ) : null }
         <Text style={styles.mytext}>Historia</Text>
-            <ScrollView style={styles.scrollView}>
+        <TouchableOpacity style={styles.loginBtn} onPress={()=>navigation.navigate("Profil", {language: "english"})}>
+                        <Text style={styles.loginText}>&lt;-</Text>
+        </TouchableOpacity>
+            <ScrollView directionalLockEnabled style={styles.scrollView}>
                 <View style={styles.sview}>
                     <Image style={styles.imagek} source={require("./ksiazka2.jpeg")} />
                     <StatusBar style="auto" />
@@ -93,7 +112,7 @@ const styles = StyleSheet.create({
       marginTop: 0,
       marginBottom: 0,
       marginRight: 150,
-      textAlign: 'flex-start',
+      textAlign: 'left',
     },
  mytextb:{
        height: 30,
@@ -137,12 +156,12 @@ const styles = StyleSheet.create({
   },
 
   loginBtn: {
-    width: "70%",
+    width: "10%",
     borderRadius: 10,
-    height: 50,
+    height: 40,
     alignItems: "center",
     justifyContent: "center",
-    marginTop: 10,
-    backgroundColor: "#1D33DE",
+    marginRight: 280,
+    backgroundColor: "#808080",
   },
 });

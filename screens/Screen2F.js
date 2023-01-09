@@ -1,6 +1,8 @@
 import { StatusBar } from 'expo-status-bar';
 import { StyleSheet, Button, View } from 'react-native';
 import React, { useState } from "react";
+import { useEffect } from 'react';
+import { Accelerometer } from 'expo-sensors';
 
 import {
   Text,
@@ -13,10 +15,27 @@ import {
 
 
 export default function Screen2F({navigation}) {
+  const [accelerometerData, setAccelerometerData] = useState({});
+
+    useEffect(() => {
+      const subscribe = Accelerometer.addListener(accelerometerData => {
+        setAccelerometerData(accelerometerData);
+      });
+
+      return () => {
+        subscribe.remove();
+      };
+    }, []);
   return (
     <SafeAreaView style={styles.container}>
         <Image style={styles.image} source={require("./log2.png")} />
+        { accelerometerData.x > 0.53 ? (
+                navigation.navigate("Rejestr", {language: "english"})
+         ) : null }
         <Text style={styles.mytext}>Opis</Text>
+        <TouchableOpacity style={styles.loginBtnd} onPress={()=>navigation.navigate("Rejestr", {language: "english"})}>
+                <Text style={styles.loginText}>&lt;-</Text>
+        </TouchableOpacity>
         <Image style={styles.imagek} source={require("./ksiazka2.jpeg")} />
         <Text style={styles.mytexta}>Książka1</Text>
         <Text style={styles.mytexta}>Opis książki 1</Text>
@@ -136,4 +155,13 @@ const styles = StyleSheet.create({
     backgroundColor: "#1D33DE",
     marginRight: 10,
   },
+  loginBtnd: {
+      width: "10%",
+      borderRadius: 10,
+      height: 40,
+      alignItems: "center",
+      justifyContent: "center",
+      marginRight: 280,
+      backgroundColor: "#808080",
+    },
 });

@@ -25,6 +25,10 @@ import {
   Input,
   Button,
 } from 'react-native';
+import { getFirestore } from "firebase/firestore";
+import app from "./firestoreConfig"
+import { collection, getDocs, addDoc } from "firebase/firestore";
+import {useEffect} from "react";
 
 const Stack = createNativeStackNavigator();
 const Tab = createBottomTabNavigator();
